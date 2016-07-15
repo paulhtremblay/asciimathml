@@ -1,0 +1,465 @@
+This file tests the asciitomathml library.
+
+GREEK LETTERS
+
+alpha: `alpha`       
+
+beta: `beta`        
+
+chi: `chi`        
+
+delta: `delta`       
+
+epsi: `epsi`        
+
+epsilon: `epsilon`     
+
+varepsilon: `varepsilon`  
+
+eta: `eta`         
+
+gamma: `gamma`       
+
+iota: `iota`        
+
+kappa: `kappa`       
+
+lambda: `lambda`      
+
+mu:  `mu`         
+
+nu: `nu`          
+
+omega: `omega`       
+
+phi: `phi`         
+
+varphi: `varphi` 
+
+pi: `pi`         
+
+psi: `psi`         
+
+Psi: `Psi`         
+
+rho: `rho`         
+
+sigma: `sigma`       
+
+tau: `tau`         
+
+theta: `theta`       
+
+vartheta: `vartheta`   
+
+Theta: `Theta`       
+
+upsilon: `upsilon`     
+
+xi:  `xi`         
+
+zeta: `zeta`
+
+SYMBOLS
+
+x or y: `x or y`
+
+x and y: `x and y`
+
+x if y: `x if y`
+
+OPERATORS
+
+min:   `min(x)`
+
+max:   `max(x)`
+
+lim:   `lim x`
+
+Lim:   `Lim x`
+
+sin:   `sinx`
+
+cos:   `cosx`
+
+tan:   `tanx`
+
+sinh:  `sinhx`
+
+cosh:  `coshx`
+
+tanh:  `tanhx`
+
+cot:   `cotx`
+
+sec:   `secx`
+
+csc:   `cscx`
+
+log:   `logx`
+
+ln:   `lnx`
+
+det:   `det`
+
+gcd:   `gcd`
+
+lcm:   `lcm`
+
+Delta: `Delta`
+
+Gamma: `Gamma`
+
+Lambda: `Lambda`
+
+Omega: `Omega`
+
+Phi:  `Phi`
+
+Pi:   `Pi`
+
+Sigma: `Sigma`
+
+sum:   `sum`
+
+Xi:    `Xi`
+
+prod:  `prod`
+
+vvv:  `'vvv'`
+
+nnn:  `'nnn'`
+
+uuu:  `'uuu'`
+
+* :  `* `
+
+**:  `**`
+
+//:  `//`
+
+\\\\:  `\\\\`
+
+setminus:  `setminus`
+
+xx:  `xx`
+
+-:  `-`
+
+@:  `@`
+
+o+:  `o+`
+
+ox:  `ox`
+
+o.:  `o.`
+
+^^:  `^^`
+
+vv:  `vv`
+
+nn:  `nn`
+
+uu:  `uu`
+
+!=:  `!=`
+
+:=:  `:=`
+
+lt:  `lt`
+
+<=:  `<=`
+
+lt=:  `lt=`
+
+>=:  `>=`
+
+geq:  `geq`
+
+ge:  `ge`
+
+-<:  `-<`
+
+-lt:  `-lt`
+
+>-:  `>-`
+
+-<=:  `-<=`
+
+>-=:  `>-=`
+
+in:  `in`
+
+!in:  `!in`
+
+sub:  `sub`
+
+sup:  `sup`
+
+sube:  `sube`
+
+supe:  `supe`
+
+-=:  `-=`
+
+~=:  `~=`
+
+~~:  `~~`
+
+prop:  `prop`
+
+not:  `not`
+
+=>:  `=>`
+
+<=>:  `<=>`
+
+AA:  `AA`
+
+EE:  `EE`
+
+_|_:  `_|_`
+
+TT:  `TT`
+
+|--:  `|--`
+
+|==:  `|==`
+
+int:  `int`
+
+oint:  `oint`
+
+del:  `del`
+
+grad:  `grad`
+
++-:  `+-`
+
+O/:  `O/`
+
+oo:  `oo`
+
+'aleph':  `'aleph'`
+
+...:  `...`
+
+:.:  `:.`
+
+/_:  `/_`
+
+\\ :  `\\ `
+
+quad:  `quad`
+
+qquad:  `qquad`
+
+cdots:  `cdots`
+
+vdots:  `vdots`
+
+ddots:  `ddots`
+
+ldots:  `ldots`
+
+diamond:  `diamond`
+
+square:  `square`
+
+|__:  `|__`
+
+__|:  `__|`
+
+|~:  `|~`
+
+~|:  `~|`
+
+CC:  `CC`
+
+NN:  `NN`
+
+QQ:  `QQ`
+
+RR:  `RR`
+
+ZZ:  `ZZ`
+
+dim:  `dim`
+
+mod:  `mod`
+
+lub:  `lub`
+
+glb:  `glb`
+
+->:  `->`
+
+EQUATIONS
+
+
+x (simple-variable): `x`
+
+1 (simple-number): `1`
+
+-1 (simple-negative-number): `-1`
+
++ (simple-operator): `+`
+
++ (simple-operator): `+`
+
+alpha (simple-ascii-symbol): `alpha`
+
+1 + 1 (simple-addition): `1 + 1`
+
+1/2 (simple-fraction): `1/2`
+
+1/2/3/4 (double-fraction): `1/2/3/4`
+
+1/2/3/4/5/6 (tripple-fraction): `1/2/3/4/5/6`
+
+(6) (parenthesis): `(6)`
+
+(6 (left parenthesis): `(6`
+
+6) (right parenthesis): `6)`
+
+(a + b)/c (fraction needs parenthesis): `(a + b)/c`
+
+b^2 (simple superscript): `b^2`
+
+b^(c + d) (superscript with addition): `b^(c + d)`
+
+b^((c + d)/(e + f)) (superscript with complex fraction): `b^((c + d)/(e + f))`
+
+|| (single double bar): `||`
+
+|| 4 + 5 || (double bar with addition): `|| 4 + 5 ||`
+
+|| (a + b)/(c+d) ||^2 (complex double bar): `|| (a + b)/(c+d) ||^2`
+
+a_b^2 (simple sub super): `a_b^2`
+
+sum (simple sum): `sum`
+
+∑ (simple sum): `∑`
+
+sum_b (sum with base): `sum_b`
+
+sum^6 (sum with super): `sum^6`
+
+sum_(n=1)^oo = 1/2 + 1/4 + 1/8 + ... (sum with munder and mover): `sum_(n=1)^oo = 1/2 + 1/4 + 1/8 + ...`
+
+∏_b^2 (product with munder and mover): `∏_b^2`
+
+^^^_b^2 (hat ?? with munder and mover): `^^^_b^2`
+
+vvv_b^2 (Big vvv ?? with munder and mover): `vvv_b^2`
+
+nnn_b^2 (nnn with munder and mover): `nnn_b^2`
+
+uuu_b^2 (uuu with munder and mover): `uuu_b^2`
+
+min_b^2 (min with under and over): `min_b^2`
+
+max_b^2 (max with munder and mover): `max_b^2`
+
+{a + b} (simple {}): `{a + b}`
+
+({x + 5}/{x -5}) ({ and } with fraction): `({x + 5}/{x -5})`
+
+[x -5]^2 (brackets with square): `[x -5]^2`
+
+(: x + y :) ((:): `(: x + y :)`
+
+(: x + y :)/ (: x - y :) ((: with fraction): `(: x + y :)/ (: x - y :)`
+
+<< x + y >>/ << x - y >> ((: with fraction): `<< x + y >>/ << x - y >>`
+
+{: 5 + 7 :} ((: with fraction): `{: 5 + 7 :}`
+
+B^{: 5 + 7 :} ((: with fraction): `B^{: 5 + 7 :}`
+
+hat 5 (hat 5): `hat 5`
+
+hat (5 6) (hat with double base): `hat (5 6)`
+
+bar (5 6) (bar with double base): `bar (5 6)`
+
+vec (5 6) (vec with double base): `vec (5 6)`
+
+dot (5 6) (dot with double base): `dot (5 6)`
+
+ddot (5 6) (ddot with double base): `ddot (5 6)`
+
+ul (5 6) (ul with double base): `ul (5 6)`
+
+text(sum vs.) sum (mtext): `text(sum vs.) sum`
+
+root (2 + 1) ((b^2 - 4ac)/b) (mroot): `root (2 + 1) ((b^2 - 4ac)/b)`
+
+frac a (b - a) (frac): `frac a (b - a)`
+
+sqrt(a^2 - 4ac) + 4 (sqrt): `sqrt(a^2 - 4ac) + 4`
+
+max_i^j(x) (max underover as function): `max_i^j(x)`
+
+lim_i^j(x) (lim): `lim_i^j(x)`
+
+Lim_(i + 1)^j x (lim): `Lim_(i + 1)^j x`
+
+sin (x + 5) (sin): `sin (x + 5)`
+
+cos (x + 5) (cos): `cos (x + 5)`
+
+tan (x + 5) (tan): `tan (x + 5)`
+
+|x|= {(x , if x ge 0 text(,)),(-x , if x <0.):} (open matrix): `|x|= {(x , if x ge 0 text(,)),(-x , if x <0.):}`
+
+((1,2),(1,2)) (simple matrix): `((1,2),(1,2))`
+
+(a,b]={x in RR | a < x <= b} (bar with non maching): `(a,b]={x in RR | a < x <= b}`
+
+alpha / (incomplete fraction): `alpha /`
+
+root 1 (incomplete root): `root 1`
+
+root (incomplete root): `root`
+
+hat (incomplete hat): `hat`
+
+vec (incomplete vec): `vec`
+
+dot (incomplete dot): `dot`
+
+ddot (incomplete ddot): `ddot`
+
+ul (incomplete ul): `ul`
+
+frac (empty frac): `frac`
+
+sum_ (incomplete sum1): `sum_`
+
+sum_^ (incomplete sum2): `sum_^`
+
+sum_b^ (incomplete munderover): `sum_b^`
+
+b^ (incomplete superscript): `b^`
+
+b_ (incomplete subscript): `b_`
+
+b_a^ (incomplete subsup): `b_a^`
+
+abc-123.45^-1.1 (external1): `abc-123.45^-1.1`
+
+text alpha (incomplete text): `text alpha`
+
+text{undefined} (text with curly brackets): `text{undefined}`
+
+text (empty text ): `text`
+
+hat(ab) bar(xy) ulA vec v dotx ddot y (over many): `hat(ab) bar(xy) ulA vec v dotx ddot y`
+
+[[a,b],[c,d]]((n),(k)) (two matrices): `[[a,b],[c,d]]((n),(k))`
+
+hat beta = (X′X)^-1X′y (1/n sum x_i x_i′)^-1(1/n sum x_i y_i) (least squares): `hat beta = (X′X)^-1X′y (1/n sum x_i x_i′)^-1(1/n sum x_i y_i)`
+

@@ -1,0 +1,187 @@
+Metadata-Version: 1.0
+Name: asciitomathml
+Version: .88
+Summary: Module converts ASCII math to Mathml
+Home-page: https://sourceforge.net/projects/asciimathpython/
+Author: Paul Tremblay
+Author-email: Paul Henry Tremblay <paultremblay@users.sourceforge.net> 
+License: BSD
+Description: README
+        +++++++
+        
+        .. comment
+        
+        =========
+        Overview
+        =========
+        
+        The asciitomathml converts ASCII math to MathML. See http://mathcs.chapman.edu/~jipsen/mathml/asciimath.html
+        for more details. As an example, asciitomathml converts the string `x^2` to::
+        
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+               <mstyle>
+                <msup>
+                 <mi>x</mi>
+                 <mn>2</mn>
+                </msup>
+               </mstyle>
+              </math>
+        
+        =============
+        Installation
+        =============
+        
+        Install asciitomathml in the normal way::
+        
+         python setup.py install
+        
+        Or, for pip::
+        
+         pip install asciitomathml
+        
+        Installation for Python 3
+        ==========================
+        
+        I have included a small script to convert the library to python 3. Run this script with a bash command::
+        
+         bash to_3.sh
+        
+        If you are running Windows, then do the following three steps:
+        
+        1. Run the script `asciitomathml/asciitomathml.py > temp.py`
+        
+        2. mv temp.py asciitomathml/asciitomathml.py
+        
+        3. 2to3 -w asciitomathml/asciitomathml.py
+        
+        Then install as you would as above::
+        
+         python3 setup.py install
+        
+        ===
+        Use
+        ===
+        
+        The following creates etree from a string::
+        
+         import asciitomathml.asciitomathml 
+         the_string = 'x^2'
+         the_string = unicode(the_string.decode('utf8')) # adjust to your own encoding
+         math_obj =  asciitomathml.asciitomathml.AsciiMathML()
+         math_obj.parse_string(the_string)
+        
+        .. Warning::
+        
+         Note that you must pass a Unicode string to the parse_string method. If you do not, and 
+         your text contains encoding not in the US-ASCII range, you most likely get an ugly error.
+        
+        In order to get the tree, use th `math_tree` method::
+        
+         math_tree = math_obj.get_tree() # math_tree is an etree object
+        
+        Instead, if you want an XML string, use the `to_xml_string` method:: 
+        
+         xml_string = math_obj.to_xml_string() # xml_string is an XML string
+        
+        The xml_string will have type 'str' and be encoded as US-ASCII. For XML
+        applications, this encoding (with entities, of course) will render exactly the
+        same as encoding the string. If you need a differenct encoding, however,  pass
+        the "encoding" option to the `to_xml_string` method::
+        
+         xml_string = math_obj.to_xml_string(encoding='utf8')
+        
+        If you pass an encoding other than utf8 to this method, the string will start with the  
+        standard XML encoding, in accordance with XML standards::
+        
+         <?xml version='1.0' encoding='utf8'?>
+        
+        If you are incorporating the string into an XML document, and don't want the
+        encoding string, you should probably use the get_tree method and incorporate
+        the resulting object into your etree document. Likewise, by not passing any
+        encoding to this method, the returned string will be encoded as ASCII and
+        should not include the encoding part of the string. However, if for whatever
+        reason you need a tree without the encoding, pass the no_encoding_string
+        option to the to_xml_string method::
+        
+         xml_string = math_obj.to_xml_string(encoding="utf8", no_encoding_string = True) 
+        
+        
+        Math style
+        ===========
+        
+        You can pass any attributes to the `<msstyle>` that are allowed. Use the `mstyle` 
+        option to pass a *dictionary* when creating the method::
+        
+         math_obj =  asciitomathml.asciitomathml.AsciiMathML(mstyle={'displaystyle':'true'})
+        
+        The most useful attribute is probably  `displaystyle`. In general, set this attribute to 
+        `true` if you will put the equation by itself, in block. Otherwise, don't set this value at all, 
+        or set it to `false`.  The consortium for mathml explains it this way:
+        
+        
+            For an instance of MathML embedded in a textual data format (such as HTML) in
+            "display" mode, i.e. in place of a paragraph, displaystyle = "true" and
+            scriptlevel = "0" for the outermost expression of the embedded MathML; if the
+            MathML is embedded in "inline" mode, i.e. in place of a character,
+            displaystyle = "false" and scriptlevel = "0" for the outermost expression. See
+            Chapter 7 The MathML Interface for further discussion of the distinction
+            between "display" and "inline" embedding of MathML and how this can be
+            specified in particular instances. In general, a MathML renderer may determine
+            these initial values in whatever manner is appropriate for the location and
+            context of the specific instance of MathML it is rendering, or if it has no
+            way to determine this, based on the way it is most likely to be used; as a
+            last resort it is suggested that it use the most generic values 
+            displaystyle = ""true"" and scriptlevel = ""0"". 
+        
+        http://www.w3.org/TR/MathML2/chapter3.html#presm.mstyle
+        
+        =======
+        Scripts
+        =======
+        
+        I have included two scripts as examples. These scripts show the capability of
+        the libarary. Since they must read text from  a file, form paragraphs, and distinguish 
+        between math and non math markup, they are not meant as tools for extensive conversion of 
+        text to HTM or FO. For such conversions, see:
+        
+        http://docutils.sourceforge.net/
+        
+        Specifically, see the sandbox/docbook directory, which features extensive
+        stylesheets and instructions for converting text to docbook, and then to HTML
+        or FO. 
+        
+        In order to use the scripts, type::
+        
+         python scripts/asciimath2fo.py <file.txt>
+        
+        or::
+         
+         python scripts/asciimath2html.py <file.txt>
+        
+        The scripts convert anything between "`" and "`" to mathml; otherwise, the scripts just copy the 
+        text verbatim. See the examples in the example directory. For a quick start, try::
+        
+        
+         python scripts/asciimath2html.py examples/linear_regression.txt > linear.xhtml
+        
+        and then open `linear.xhtml` in a browser that can handle mathml, such as Firefox.
+        
+        ====
+        Test
+        ====
+        
+        To test the library, change to the test directory and type
+        
+        python test_asciimath.py
+        
+        You should get no messages.
+        
+        
+Platform: any
+Classifier: Topic :: Documentation
+Classifier: Topic :: Software Development :: Documentation
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Programming Language :: Python
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent

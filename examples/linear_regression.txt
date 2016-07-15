@@ -1,0 +1,25 @@
+Given a data set `{y_i, x_(i1), ldots, x_(ip)}_(i=1)^n` of n statistical
+units, a linear regression model assumes that the relationship between the
+dependent variable yi and the p-vector of regressors xi is linear. This
+relationship is modeled through a so-called “disturbance term” εi — an
+unobserved random variable that adds noise to the linear relationship between
+the dependent variable and regressors. Thus the model takes the form
+
+
+
+    `y_i = beta_1 x_{i1} + cdots + beta_p x_{ip} + varepsilon_i = x'_ibeta + varepsilon_i, qquad i = 1, ldots , n,` 
+
+where ′ denotes the transpose, so that xi′β is the inner product between vectors xi and β.
+
+Often these n equations are stacked together and written in vector form as
+
+    `y = Xbeta + varepsilon, `
+
+
+where
+
+`((y_1),(y_2),(vdots),(y_n)), X = ((x'_1),(x'_2),(vdots),
+(x'_n)) = ((x_11,ldots,x_(1p)),(x_(21),ldots,x_(2p)),(vdots,cdots,vdots),(x_(n1),ldots,x_(np))), beta =
+((beta_1),(vdots),(beta_p)), = epsilon ((epsilon_1),(epsilon_2),(vdots),(epsilon_p))`
+
+Some remarks on terminology and general use:

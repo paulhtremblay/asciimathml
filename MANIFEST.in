@@ -1,0 +1,8 @@
+include *.py
+include MANIFEST
+include MANIFEST.in
+include to_3.py
+include to_3.sh
+include test/test.xml
+recursive-include asciitomathml *
+recursive-include examples *
