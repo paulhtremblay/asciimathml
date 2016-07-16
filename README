@@ -67,7 +67,7 @@ The following creates etree from a string::
  Note that you must pass a Unicode string to the parse_string method. If you do not, and 
  your text contains encoding not in the US-ASCII range, you most likely get an ugly error.
 
-In order to get the tree, use th `math_tree` method::
+In order to get the tree, use the `math_tree` method::
 
  math_tree = math_obj.get_tree() # math_tree is an etree object
 

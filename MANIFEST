@@ -9,6 +9,8 @@ asciitomathml/__init__.py
 asciitomathml/__init__.pyc
 asciitomathml/asciitomathml.py
 asciitomathml/asciitomathml.pyc
+asciitomathml/temp.py
+asciitomathml/__pycache__/asciitomathml.cpython-34.pyc
 examples/linear_regression.txt
 examples/test.txt
 scripts/asciimath2fo.py

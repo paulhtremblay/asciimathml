@@ -1,4 +1,4 @@
-import sys, os
+﻿import sys, os
 from distutils.core import setup
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -8,7 +8,7 @@ script_name2 =  os.path.join('scripts', 'asciimath2html.py')
 
 
 setup(name="asciitomathml",
-    version= '.88' ,
+    version= "1.0" ,
     description="Module converts ASCII math to Mathml",
     long_description=read('README'),
     author="Paul Tremblay",

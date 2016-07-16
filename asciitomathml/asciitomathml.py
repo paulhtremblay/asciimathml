@@ -1,4 +1,4 @@
- # -*- coding: UTF-8 -*-
+﻿ # -*- coding: UTF-8 -*-
 # Copyright (c) 2012 Paul Tremblay
 #This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -29,35 +29,35 @@ class InvalidAsciiMath(Exception):
 class AsciiMathML:
 
     greek_dict = {
-'alpha':       u'\u03B1',
-'beta':        u'\u03B2',
-'chi' :        u'\u03C7',
-'delta':       u'\u03B4',
-'epsi':        u'\u03B5',
-'epsilon':     u'\u03B5',
-'varepsilon':  u'\u025B',
-'eta':         u'\u03B7',
-'gamma':       u'\u03B3',
-'iota':        u'\u03B9',
-'kappa':       u'\u03BA',
-'lambda':      u'\u03BB',
-'mu':          u'\u03BC',
-'nu':          u'\u03BD',
-'omega':       u'\u03C9',
-'phi':         u'\u03C6',
-'varphi':      u'\u03D5',
-'pi' :         u'\u03C0',
-'psi':         u'\u03C8',
-'Psi':         u'\u03A8',
-'rho':         u'\u03C1',
-'sigma':       u'\u03C3',
-'tau':         u'\u03C4',
-'theta':       u'\u03B8',
-'vartheta':    u'\u03D1',
-'Theta':       u'\u0398',
-'upsilon':     u'\u03C5',
-'xi':          u'\u03BE',
-'zeta':        u'\u03B6'
+'alpha':       '\u03B1',
+'beta':        '\u03B2',
+'chi' :        '\u03C7',
+'delta':       '\u03B4',
+'epsi':        '\u03B5',
+'epsilon':     '\u03B5',
+'varepsilon':  '\u025B',
+'eta':         '\u03B7',
+'gamma':       '\u03B3',
+'iota':        '\u03B9',
+'kappa':       '\u03BA',
+'lambda':      '\u03BB',
+'mu':          '\u03BC',
+'nu':          '\u03BD',
+'omega':       '\u03C9',
+'phi':         '\u03C6',
+'varphi':      '\u03D5',
+'pi' :         '\u03C0',
+'psi':         '\u03C8',
+'Psi':         '\u03A8',
+'rho':         '\u03C1',
+'sigma':       '\u03C3',
+'tau':         '\u03C4',
+'theta':       '\u03B8',
+'vartheta':    '\u03D1',
+'Theta':       '\u0398',
+'upsilon':     '\u03C5',
+'xi':          '\u03BE',
+'zeta':        '\u03B6'
         }
 
     symbol_dict = {
@@ -88,101 +88,101 @@ class AsciiMathML:
 'det':   'det',
 'gcd':   'gcd',
 'lcm':   'lcm',
-'Delta': u'\u0394',
-'Gamma': u'\u0393',
-'Lambda':u'\u039B',
-'Omega': u'\u03A9',
-'Phi' :  u'\u03A6',
-'Pi' :   u'\u03A0',
-'Sigma': u'\u2211',
-'sum':   u'\u2211',
-'Xi':    u'\u039E',
-'prod':  u'\u220f',
-'^^^':   u'\u22c0',
-'vvv':   u'\u22c1',
-'nnn':   u'\u22c2',
-'uuu':   u'\u22c3',
-"*" :    u"\u22C5",
-"**":    u"\u22C6",
-"//": u"/",
-"\\\\":  u"\\",
-"setminus": u"\\",
-"xx":   u"\u00D7",
-"-:": u"\u00F7",
-"@":  u"\u2218",
-"o+": u"\u2295",
-"ox": u"\u2297",
-"o.": u"\u2299",
-"^^": u"\u2227",
-"vv":  u"\u2228",
-"nn": u"\u2229",
-"uu": u"\u222A",
-"!=":u"\u2260",
-":=":  u":=",
-"lt": u"<",
-"<=":  u"\u2264",
-"lt=":  u"\u2264",
-">=": u"\u2265",
-"geq":  u"\u2265",
-"ge":  u"\u2265",
-"-<":  u"\u227A",
-"-lt": u"\u227A",
-">-": u"\u227B",
-"-<=": u"\u2AAF",
-">-=": u"\u2AB0",
-"in": u"\u2208",
-"!in":u"\u2209",
-"sub": u"\u2282",
-"sup":u"\u2283",
-"sube": u"\u2286",
-"supe":  u"\u2287",
-"-=": u"\u2261",
-"~=": u"\u2245",
-"~~":  u"\u2248",
-"prop":  u"\u221D",
-"not": u"\u00AC",
-"=>": u"\u21D2",
-"<=>": u"\u21D4",
-"AA": u"\u2200",
-"EE": u"\u2203",
-"_|_": u"\u22A5",
-"TT":  u"\u22A4",
-"|--": u"\u22A2",
-"|==": u"\u22A8",
-"int": u"\u222B",
-"oint":u"\u222E",
-"del":  u"\u2202",
-"grad":u"\u2207",
-"+-":u"\u00B1",
-"O/":u"\u2205",
-"oo":u"\u221E",
-'aleph': u"\u2135",
-"...":u"...",
-":.":u"\u2234",
-"/_": u"\u2220",
-"\\ ":u"\u00A0",
-"quad": u"\u00A0\u00A0",
-"qquad": u"\u00A0\u00A0\u00A0\u00A0",
-"cdots": u"\u22EF",
-"vdots": u"\u22EE",
-"ddots": u"\u22F1",
-"ldots": u"\u2026",
-"diamond": u"\u22C4",
-"square": u"\u25A1",
-"|__":u"\u230A",
-"__|": u"\u230B",
-"|~":u"\u2308",
-"~|": u"\u2309",
-"CC": u"\u2102",
-"NN":u"\u2115",
-"QQ": u"\u211A",
-"RR": u"\u211D",
-"ZZ": u"\u2124",
-"dim":  u"dim",
-"mod":  u"mod",
-"lub":  u"lub",
-"glb":  u"glb",
-"->":  u"\u2192",
+'Delta': '\u0394',
+'Gamma': '\u0393',
+'Lambda':'\u039B',
+'Omega': '\u03A9',
+'Phi' :  '\u03A6',
+'Pi' :   '\u03A0',
+'Sigma': '\u2211',
+'sum':   '\u2211',
+'Xi':    '\u039E',
+'prod':  '\u220f',
+'^^^':   '\u22c0',
+'vvv':   '\u22c1',
+'nnn':   '\u22c2',
+'uuu':   '\u22c3',
+"*" :    "\u22C5",
+"**":    "\u22C6",
+"//": "/",
+"\\\\":  "\\",
+"setminus": "\\",
+"xx":   "\u00D7",
+"-:": "\u00F7",
+"@":  "\u2218",
+"o+": "\u2295",
+"ox": "\u2297",
+"o.": "\u2299",
+"^^": "\u2227",
+"vv":  "\u2228",
+"nn": "\u2229",
+"uu": "\u222A",
+"!=":"\u2260",
+":=":  ":=",
+"lt": "<",
+"<=":  "\u2264",
+"lt=":  "\u2264",
+">=": "\u2265",
+"geq":  "\u2265",
+"ge":  "\u2265",
+"-<":  "\u227A",
+"-lt": "\u227A",
+">-": "\u227B",
+"-<=": "\u2AAF",
+">-=": "\u2AB0",
+"in": "\u2208",
+"!in":"\u2209",
+"sub": "\u2282",
+"sup":"\u2283",
+"sube": "\u2286",
+"supe":  "\u2287",
+"-=": "\u2261",
+"~=": "\u2245",
+"~~":  "\u2248",
+"prop":  "\u221D",
+"not": "\u00AC",
+"=>": "\u21D2",
+"<=>": "\u21D4",
+"AA": "\u2200",
+"EE": "\u2203",
+"_|_": "\u22A5",
+"TT":  "\u22A4",
+"|--": "\u22A2",
+"|==": "\u22A8",
+"int": "\u222B",
+"oint":"\u222E",
+"del":  "\u2202",
+"grad":"\u2207",
+"+-":"\u00B1",
+"O/":"\u2205",
+"oo":"\u221E",
+'aleph': "\u2135",
+"...":"...",
+":.":"\u2234",
+"/_": "\u2220",
+"\\ ":"\u00A0",
+"quad": "\u00A0\u00A0",
+"qquad": "\u00A0\u00A0\u00A0\u00A0",
+"cdots": "\u22EF",
+"vdots": "\u22EE",
+"ddots": "\u22F1",
+"ldots": "\u2026",
+"diamond": "\u22C4",
+"square": "\u25A1",
+"|__":"\u230A",
+"__|": "\u230B",
+"|~":"\u2308",
+"~|": "\u2309",
+"CC": "\u2102",
+"NN":"\u2115",
+"QQ": "\u211A",
+"RR": "\u211D",
+"ZZ": "\u2124",
+"dim":  "dim",
+"mod":  "mod",
+"lub":  "lub",
+"glb":  "glb",
+"->":  "\u2192",
             }
 # left off f and g because don't know what to do with them
 
@@ -218,18 +218,18 @@ class AsciiMathML:
 
             }
 
-    under_over_list = [u"\u2211", u"\u220f", u"\u22c0", u"\u22c1",u"\u22c2",u"\u22c3", "min", "max", "Lim", "lim"]
+    under_over_list = ["\u2211", "\u220f", "\u22c0", "\u22c1","\u22c2","\u22c3", "min", "max", "Lim", "lim"]
     under_over_base_last = ['hat', 'bar', 'vec', 'dot', 'ddot', 'ul']
     over_list = ['hat', 'bar', 'vec', 'dot', 'ddot']
     under_list = ['ul']
-    fence_list = ['(', ')', '{', '}', '[', ']', u'\u2239', u'\u232a', '(:', ':)', '<<', '>>', '{:', ':}']
-    open_fence_list = ['(', '{', '[', u'\u2329', '<<', '{:']
-    close_fence_list = [')', '}', ']', u'\u232A', '>>', ':}']
+    fence_list = ['(', ')', '{', '}', '[', ']', '\u2239', '\u232a', '(:', ':)', '<<', '>>', '{:', ':}']
+    open_fence_list = ['(', '{', '[', '\u2329', '<<', '{:']
+    close_fence_list = [')', '}', ']', '\u232A', '>>', ':}']
     function_list = ['root', 'stackrel', 'frac', 'sqrt']
     group_func_list = ['min', 'max', 'sin', 'cos', 'tan', 'sinh', 'cosh', 'tanh', 'cot', 'sec', 'csc', 'log', 'ln', 'det', 'gcd', 'lcm']
-    fence_pair = {')':'(', '}':'{', ']':'[', u'\u232A':u'\u2329', ':}': '{:'} # last pair goes first in this dic
-    over_dict = {'hat':'^', 'bar':u"\u00AF", 'vec':u"\u2192", 'dot':u".", 'ddot':u".."}
-    under_dict = {'ul': u"\u0332"}
+    fence_pair = {')':'(', '}':'{', ']':'[', '\u232A':'\u2329', ':}': '{:'} # last pair goes first in this dic
+    over_dict = {'hat':'^', 'bar':"\u00AF", 'vec':"\u2192", 'dot':".", 'ddot':".."}
+    under_dict = {'ul': "\u0332"}
     sym_list = list(symbol_dict.keys())
     spec_name_list = list(special_dict.keys())
     op_name_list = list(operator_dict.keys())
@@ -268,13 +268,15 @@ class AsciiMathML:
         string = re.sub(encode_exp, '', string)
         return string.lstrip()
 
-    def to_xml_string(self, encoding=None, no_encoding_string = False):
+    def to_xml_string(self, encoding=None, no_encoding_string = False, as_string = False):
         if not encoding:
             encoding = self._output_encoding
         self._add_namespace()
-        xml_string = tostring(self._tree, encoding=encoding)
-        if no_encoding_string:
+        if as_string:
+            encoding = "unicode"
+        elif no_encoding_string:
             xml_string = self._get_rid_of_version_tag(xml_string)
+        xml_string = tostring(self._tree, encoding=encoding)
         return xml_string
 
     def get_tree(self):
@@ -289,7 +291,7 @@ class AsciiMathML:
         element = Element(tag, **attrib)
 
         if not text is None:
-            if isinstance(text, basestring):
+            if isinstance(text, str):
                 element.text = text
             else:
                 children = (text, ) + children
@@ -355,7 +357,7 @@ class AsciiMathML:
         """
         if the_tree == 0:
             the_tree = self._tree
-        child_parent_map = dict((c, p) for p in the_tree.getiterator() for c in p)
+        child_parent_map = dict((c, p) for p in the_tree.iter() for c in p)
         parent = child_parent_map.get(child)
         return parent
 
@@ -379,10 +381,9 @@ class AsciiMathML:
         the_string, token, the_type = self._parse_tokens(the_string)
         return the_string, token, the_type
 
-                
     def _fix_open_fence(self, element):
         """
-        changes <mfence open="(" close="" 
+        changes <mfence open="(" close=""
          ...
          </mfenced>
 
@@ -475,7 +476,7 @@ class AsciiMathML:
         close_fence = element.get('close')
         the_class = element.get('class')
         open_fence = element.get('open')
-        if close_fence == u'\u232A': # don't remove these parenthesis
+        if close_fence == '\u232A': # don't remove these parenthesis
             return
         pair = self.fence_pair.get(close_fence)
         if the_class == 'invisible':
@@ -673,7 +674,7 @@ class AsciiMathML:
 
     def _handle_double_single_bar(self, token, the_type):
         if token == '||':
-            the_chr = u'\u2016'
+            the_chr = '\u2016'
         elif token == '|':
             the_chr = '|'
 
@@ -737,9 +738,9 @@ class AsciiMathML:
 
     def _add_fence_to_tree(self, token, the_type):
         if token == '(:' or  token == '<<':
-            token = u"\u2329"
+            token = "\u2329"
         if token == ':)' or token == '>>':
-            token = u"\u232a"
+            token = "\u232a"
         if token in self.open_fence_list:
             self._handle_open_fence(token)
         elif token in self.close_fence_list:
@@ -751,10 +752,10 @@ class AsciiMathML:
         erronously non completed them.
 
         """
-        for e in self._tree.getiterator('mfenced'):
+        for e in self._tree.iter('mfenced'):
             if e.get('close') == '' and e.get('class') != 'invisible' and not self._fenced_for_left:
                 self._fix_open_fence(e)
-        for e in self._tree.getiterator():
+        for e in self._tree.iter():
             if e.tag == 'mfrac' and len(e) != 2 and len(e) < 3:
                 element = self._make_element('mo')
                 while len(e) != 2:

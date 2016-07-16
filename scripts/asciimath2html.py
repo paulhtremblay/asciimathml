@@ -1,17 +1,17 @@
-import sys, os
+﻿import sys, os
 temp_path = os.path.join('..', 'asciitomathml')
 # sys.path.append(temp_path)
 from xml.etree.ElementTree import Element, tostring
 import xml.etree.ElementTree as etree
-import asciitomathml.asciitomathml 
+import asciitomathml.asciitomathml
 import argparse
-ns = "{http://www.w3.org/1999/xhtml}"
+import codecs
 
-def paragraphs(file, separator=None):
+def paragraphs(file_obj, separator=None):
     if not callable(separator):
         def separator(line): return line == '\n'
     paragraph = []
-    for line in file:
+    for line in file_obj:
         if separator(line):
             if paragraph:
                 yield ''.join(paragraph)
@@ -38,7 +38,7 @@ def insert_text(html_obj, text):
 def insert_math(p, line):
     math_obj =  asciitomathml.asciitomathml.AsciiMathML(mstyle={'displaystyle':'true'})
     math_obj.parse_string(line)
-    math_tree = math_obj.get_tree() 
+    math_tree = math_obj.get_tree()
     p.append(math_tree)
 
 
@@ -47,9 +47,7 @@ def read_file(file_obj):
     html_obj = make_html_tree()
     body = html_obj[1]
     for para in it_obj:
-        if isinstance(para, str) and  sys.version_info < (3,):
-            para = para.decode('utf8')
-        p = Element(ns + 'p')
+        p = Element('p')
         body.append(p)
         the_string = para
         while the_string:
@@ -73,49 +71,40 @@ def read_file(file_obj):
     return html_obj
 
 def get_options():
-    parser = argparse.ArgumentParser(description='Convert ASCII text to FO')
-    parser.add_argument('in_file', default = sys.stdin, nargs='?', 
+    parser = argparse.ArgumentParser(description='Convert ASCII text to HTML')
+    parser.add_argument('in_file', default = sys.stdin, nargs='?',
                 help = 'the file to input; default is standard in')
     args =  parser.parse_args()
     return args
 
 def ascii_to_math_tree(the_string):
-    if isinstance(the_string, str) and  sys.version_info < (3,):
-        the_string = the_string.decode('utf8')
     math_obj =  asciitomathml.AsciiMathML()
     math_obj.parse_string(the_string)
     math_tree = math_obj.get_tree()
     return math_tree
 
 def make_html_tree():
-    html = Element(ns + 'html')
-    html.set('xmlns:mml', 'http://www.w3.org/1998/Math/MathML')
-    head = Element(ns + 'head')
+    html = Element('html')
+    head = Element('head')
     html.append(head)
-    title = Element(ns + 'title')
+    title = Element('title')
     title.text = 'ASCIIMathml Example'
     head.append(title)
-    body = Element(ns + 'body')
+    body = Element('body')
     html.append(body)
     return html
 
 def main():
-    xml_pi= etree.ProcessingInstruction('xml' , text='version="1.0"')
     args = get_options()
     in_file = args.in_file
     if isinstance(in_file, str):
         read_obj = open(in_file, 'r')
     else:
-        read_obj = args.in_file 
-
+        read_obj = args.in_file
     html_obj = read_file(read_obj)
     read_obj.close()
-    if  sys.version_info < (3,):
-        print(tostring(xml_pi))
-        print(tostring(html_obj))
-    else:
-        print(tostring(xml_pi, encoding=str))
-        print(tostring(html_obj, encoding=str))
+    final_string = tostring(html_obj, encoding="unicode")
+    print(final_string)
 
 
 if __name__ == '__main__':
