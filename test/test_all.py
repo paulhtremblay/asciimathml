@@ -150,6 +150,20 @@ class MyTest(unittest.TestCase):
          """
         self.assertTrue(xml_compare_strings(xml_string, needs))
 
+    def test_simple_ascii_symbol(self):
+        math_obj =  asciitomathml.asciitomathml.AsciiMathML()
+        the_string = 'alpha'
+        math_obj.parse_string(the_string)
+        xml_string = math_obj.to_xml_string(as_string = True) # xml_string is an XML string
+        needs = """
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mstyle>
+               <mi>α</mi>
+            </mstyle>
+         </math>
+         """
+        self.assertTrue(xml_compare_strings(xml_string, needs))
+
 
     def test_x_squared(self):
         math_obj =  asciitomathml.asciitomathml.AsciiMathML()
