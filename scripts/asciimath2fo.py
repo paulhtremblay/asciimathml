@@ -1,4 +1,4 @@
-import sys, os
+﻿import sys, os
 temp_path = os.path.join('..', 'asciitomathml')
 sys.path.append(temp_path)
 from xml.etree.ElementTree import Element, tostring
@@ -41,7 +41,7 @@ def insert_math(block, line):
     block.append(instream)
     math_obj =  asciitomathml.asciitomathml.AsciiMathML(mstyle={'scriptlevel': '-2'})
     math_obj.parse_string(line)
-    math_tree = math_obj.get_tree() 
+    math_tree = math_obj.get_tree()
     instream.append(math_tree)
 
 
@@ -50,8 +50,6 @@ def read_file(file_obj):
     fo_obj = make_fo_tree()
     flow = fo_obj[1][0]
     for para in it_obj:
-        if isinstance(para, str) and  sys.version_info < (3,):
-            para = para.decode('utf8')
         block = Element(ns + 'block')
         block.set('space-before', '12pt')
         flow.append(block)
@@ -84,8 +82,6 @@ def get_options():
     return args
 
 def ascii_to_math_tree(the_string):
-    if isinstance(the_string, str) and  sys.version_info < (3,):
-        the_string = the_string.decode('utf8')
     math_obj =  asciitomathml.AsciiMathML()
     math_obj.parse_string(the_string)
     math_tree = math_obj.get_tree()

@@ -12,6 +12,8 @@ def paragraphs(file_obj, separator=None):
         def separator(line): return line == '\n'
     paragraph = []
     for line in file_obj:
+        if line.startswith(u'\ufeff'):
+            line = line[1:]
         if separator(line):
             if paragraph:
                 yield ''.join(paragraph)
@@ -109,3 +111,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

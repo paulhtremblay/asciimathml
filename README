@@ -31,24 +31,13 @@ Or, for pip::
 
  pip install asciitomathml
 
-Installation for Python 3
+Installation for Python 2
 ==========================
 
-I have included a small script to convert the library to python 3. Run this script with a bash command::
+Use version .88 if you need asciimathml for Python 2.7::
+  pip install asciimathml=.88
 
- bash to_3.sh
 
-If you are running Windows, then do the following three steps:
-
-1. Run the script `asciitomathml/asciitomathml.py > temp.py`
-
-2. mv temp.py asciitomathml/asciitomathml.py
-
-3. 2to3 -w asciitomathml/asciitomathml.py
-
-Then install as you would as above::
-
- python3 setup.py install
 
 ===
 Use
@@ -58,14 +47,9 @@ The following creates etree from a string::
 
  import asciitomathml.asciitomathml 
  the_string = 'x^2'
- the_string = unicode(the_string.decode('utf8')) # adjust to your own encoding
  math_obj =  asciitomathml.asciitomathml.AsciiMathML()
  math_obj.parse_string(the_string)
 
-.. Warning::
-
- Note that you must pass a Unicode string to the parse_string method. If you do not, and 
- your text contains encoding not in the US-ASCII range, you most likely get an ugly error.
 
 In order to get the tree, use the `math_tree` method::
 
@@ -73,14 +57,13 @@ In order to get the tree, use the `math_tree` method::
 
 Instead, if you want an XML string, use the `to_xml_string` method:: 
 
- xml_string = math_obj.to_xml_string() # xml_string is an XML string
+ xml_string = math_obj.to_xml_string() # xml_string a binary string
 
-The xml_string will have type 'str' and be encoded as US-ASCII. For XML
-applications, this encoding (with entities, of course) will render exactly the
-same as encoding the string. If you need a differenct encoding, however,  pass
-the "encoding" option to the `to_xml_string` method::
 
- xml_string = math_obj.to_xml_string(encoding='utf8')
+The xml_string will have type 'bytes'. If you will to have a type of 'str'
+pass an encoding of type "unicode"::
+
+ xml_string = math_obj.to_xml_string(encoding='unicode')
 
 If you pass an encoding other than utf8 to this method, the string will start with the  
 standard XML encoding, in accordance with XML standards::
