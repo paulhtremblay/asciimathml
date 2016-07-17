@@ -1632,30 +1632,207 @@ class MyTest(unittest.TestCase):
          """
         self.assertTrue(xml_compare_strings(xml_string, needs))
 
-    def test_external1(self):
+    def test_incomplete_text(self):
         math_obj = asciitomathml.asciitomathml.AsciiMathML()
-        the_string = 'abc-123.45^-1.1'
+        the_string = 'text alpha'
         math_obj.parse_string(the_string)
         xml_string = math_obj.to_xml_string(as_string = True)
         needs = """
          <math xmlns="http://www.w3.org/1998/Math/MathML">
             <mstyle>
-               <mi>a</mi>
-               <mi>b</mi>
-               <mi>c</mi>
-               <mo>-</mo>
-               <msup>
-                  <mn>123.45</mn>
-                  <mrow class="neg-num">
-                     <mo>-</mo>
-                     <mn>1.1</mn>
-                  </mrow>
-               </msup>
+               <mtext></mtext>
+               <mi>α</mi>
             </mstyle>
          </math>
          """
         self.assertTrue(xml_compare_strings(xml_string, needs))
 
+    def test_text_with_curly_brackets(self):
+        math_obj = asciitomathml.asciitomathml.AsciiMathML()
+        the_string = 'text{undefined}'
+        math_obj.parse_string(the_string)
+        xml_string = math_obj.to_xml_string(as_string = True)
+        needs = """
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mstyle>
+               <mtext>undefined</mtext>
+            </mstyle>
+         </math>
+         """
+        self.assertTrue(xml_compare_strings(xml_string, needs))
+
+    def test_empty_text(self):
+        math_obj = asciitomathml.asciitomathml.AsciiMathML()
+        the_string = 'text'
+        math_obj.parse_string(the_string)
+        xml_string = math_obj.to_xml_string(as_string = True)
+        needs = """
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mstyle>
+               <mtext></mtext>
+            </mstyle>
+         </math>
+         """
+        self.assertTrue(xml_compare_strings(xml_string, needs))
+
+    def test_over_many(self):
+        math_obj = asciitomathml.asciitomathml.AsciiMathML()
+        the_string = 'hat(ab) bar(xy) ulA vec v dotx ddot y'
+        math_obj.parse_string(the_string)
+        xml_string = math_obj.to_xml_string(as_string = True)
+        needs = """
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mstyle>
+               <mover class="hat">
+                  <mrow class="mover">
+                     <mi>a</mi>
+                     <mi>b</mi>
+                  </mrow>
+                  <mo>^</mo>
+               </mover>
+               <mover class="bar">
+                  <mrow class="mover">
+                     <mi>x</mi>
+                     <mi>y</mi>
+                  </mrow>
+                  <mo>¯</mo>
+               </mover>
+               <munder class="ul">
+                  <mi>A</mi>
+                  <mo>̲</mo>
+               </munder>
+               <mover class="vec">
+                  <mi>v</mi>
+                  <mo>→</mo>
+               </mover>
+               <mover class="dot">
+                  <mi>x</mi>
+                  <mo>.</mo>
+               </mover>
+               <mover class="ddot">
+                  <mi>y</mi>
+                  <mo>..</mo>
+               </mover>
+            </mstyle>
+         </math>
+         """
+        self.assertTrue(xml_compare_strings(xml_string, needs))
+
+    def test_two_matrices(self):
+        math_obj = asciitomathml.asciitomathml.AsciiMathML()
+        the_string = '[[a,b],[c,d]]((n),(k))'
+        math_obj.parse_string(the_string)
+        xml_string = math_obj.to_xml_string(as_string = True)
+        needs = """
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mstyle>
+               <mfenced close="]" open="[" separators="">
+                  <mtable>
+                     <mtr>
+                        <mtd>
+                           <mi>a</mi>
+                        </mtd>
+                        <mtd>
+                           <mi>b</mi>
+                        </mtd>
+                     </mtr>
+                     <mtr>
+                        <mtd>
+                           <mi>c</mi>
+                        </mtd>
+                        <mtd>
+                           <mi>d</mi>
+                        </mtd>
+                     </mtr>
+                  </mtable>
+               </mfenced>
+               <mfenced close=")" open="(" separators="">
+                  <mtable>
+                     <mtr>
+                        <mtd>
+                           <mi>n</mi>
+                        </mtd>
+                     </mtr>
+                     <mtr>
+                        <mtd>
+                           <mi>k</mi>
+                        </mtd>
+                     </mtr>
+                  </mtable>
+               </mfenced>
+            </mstyle>
+         </math>
+         """
+        self.assertTrue(xml_compare_strings(xml_string, needs))
+
+    def test_least_squares(self):
+        math_obj = asciitomathml.asciitomathml.AsciiMathML()
+        the_string = 'hat beta = (X′X)^-1X′y (1/n sum x_i x_i′)^-1(1/n sum x_i y_i)'
+        math_obj.parse_string(the_string)
+        xml_string = math_obj.to_xml_string(as_string = True)
+        needs = """
+         <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <mstyle>
+               <mover class="hat">
+                  <mi>β</mi>
+                  <mo>^</mo>
+               </mover>
+               <mo>=</mo>
+               <msup>
+                  <mfenced close=")" open="(" separators="">
+                     <mi>X</mi>
+                     <mo>′</mo>
+                     <mi>X</mi>
+                  </mfenced>
+                  <mrow class="neg-num">
+                     <mo>-</mo>
+                     <mn>1</mn>
+                  </mrow>
+               </msup>
+               <mi>X</mi>
+               <mo>′</mo>
+               <mi>y</mi>
+               <msup>
+                  <mfenced close=")" open="(" separators="">
+                     <mfrac>
+                        <mn>1</mn>
+                        <mi>n</mi>
+                     </mfrac>
+                     <mo>∑</mo>
+                     <msub>
+                        <mi>x</mi>
+                        <mi>i</mi>
+                     </msub>
+                     <msub>
+                        <mi>x</mi>
+                        <mi>i</mi>
+                     </msub>
+                     <mo>′</mo>
+                  </mfenced>
+                  <mrow class="neg-num">
+                     <mo>-</mo>
+                     <mn>1</mn>
+                  </mrow>
+               </msup>
+               <mfenced close=")" open="(" separators="">
+                  <mfrac>
+                     <mn>1</mn>
+                     <mi>n</mi>
+                  </mfrac>
+                  <mo>∑</mo>
+                  <msub>
+                     <mi>x</mi>
+                     <mi>i</mi>
+                  </msub>
+                  <msub>
+                     <mi>y</mi>
+                     <mi>i</mi>
+                  </msub>
+               </mfenced>
+            </mstyle>
+         </math>
+         """
+        self.assertTrue(xml_compare_strings(xml_string, needs))
 
 if __name__ == '__main__':
     setup()
