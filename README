@@ -35,7 +35,7 @@ Installation for Python 2
 ==========================
 
 Use version .88 if you need asciimathml for Python 2.7::
-  pip install asciimathml=.88
+  pip install asciitomathml=.88
 
 
 
@@ -64,6 +64,8 @@ The xml_string will have type 'bytes'. If you will to have a type of 'str'
 pass an encoding of type "unicode"::
 
  xml_string = math_obj.to_xml_string(encoding='unicode')
+
+The string will be encoded as UTF-8.
 
 If you pass an encoding other than utf8 to this method, the string will start with the  
 standard XML encoding, in accordance with XML standards::
@@ -145,9 +147,8 @@ and then open `linear.xhtml` in a browser that can handle mathml, such as Firefo
 Test
 ====
 
-To test the library, change to the test directory and type
+To test the library, type::
 
-python test_asciimath.py
+ python test/test_all.py
 
-You should get no messages.
 
